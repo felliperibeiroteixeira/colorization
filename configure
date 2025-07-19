@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Remove previous build files
+if [ "$1" = "--clean" ]; then
+    echo "==> Cleaning up build files..."
+    rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake compile_commands.json CTestTestfile.cmake .cache colorization test_colorization "$TMP_DIR"
+    echo "Cleaning complete."
+    exit 0
+fi
+
+echo "==> Starting the setup process..."
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+
+echo "Setup completed successfully!"
